@@ -1,0 +1,68 @@
+using System;
+
+public class Element
+{
+    public string Namn { get; set; }
+    public int Z { get; set; }
+    public string Typ { get; set; }
+    public double Smältpunkt { get; set; }
+    public double Kokpunkt { get; set; }
+
+    public Element(string namn, int z, string typ, double smältpunkt, double kokpunkt)
+    {
+        Namn = namn;
+        Z = z;
+        Typ = typ;
+        Smältpunkt = smältpunkt;
+        Kokpunkt = kokpunkt;
+    }
+
+    public void Print()
+    {
+        Console.WriteLine($"Grundämne: {Namn}");
+        Console.WriteLine($" typ: {Typ}");
+        Console.WriteLine($" smältpunkt: {Smältpunkt:F1} K");
+        Console.WriteLine($" kokpunkt: {Kokpunkt:F3} K");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Element syre = new Element("syre", 8, "ickemetall", 54.36, 90.188);
+        Element järn = new Element("järn", 26, "metall", 1811, 3134);
+        Element guld = new Element("guld", 79, "metall", 1337.33, 3243);
+        Element väte = new Element("väte", 1, "ickemetall", 13.99, 20.271);
+        Element brom = new Element("brom", 35, "ickemetall", 265.8, 332.0);
+        Element kvicksilver = new Element("kvicksilver", 80, "metall", 234.3210, 629.88);
+
+        Element[] grundämnen = { syre, järn, guld, väte, brom, kvicksilver };
+        
+        Console.WriteLine("Alla grundämnen:");
+        foreach (Element e in grundämnen)
+        {
+            e.Print();
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Alla metaller:");
+        foreach (Element e in grundämnen)
+        {
+            if (e.Typ == "metall")
+            {
+                Console.WriteLine(e.Namn);
+            }
+        }
+
+        Console.WriteLine("\r\nGrundämnen med smältpunkt under 0°C och kokpunkt över 0°C:");
+        foreach (Element e in grundämnen)
+        {
+            if (e.Smältpunkt < 273.16 && e.Kokpunkt > 273.16)
+            {
+                e.Print();
+                Console.WriteLine();
+            }
+        }
+    }
+}
