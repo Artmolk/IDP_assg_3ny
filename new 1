@@ -19,7 +19,7 @@ public class Element
 
     public void Print()
     {
-        Console.WriteLine($"Element: {Namn}");
+        Console.WriteLine($"Grundämne: {Namn}");
         Console.WriteLine($" typ: {Typ}");
         Console.WriteLine($" smältpunkt: {Smältpunkt:F1} K");
         Console.WriteLine($" kokpunkt: {Kokpunkt:F3} K");
