@@ -1,0 +1,42 @@
+using System;
+
+public class Element
+{
+    public string Namn { get; set; }
+    public int Z { get; set; }
+    public string Typ { get; set; }
+    public double Smältpunkt { get; set; }
+    public double Kokpunkt { get; set; }
+
+    public Element(string namn, int z, string typ, double smältpunkt, double kokpunkt)
+    {
+        Namn = namn;
+        Z = z;
+        Typ = typ;
+        Smältpunkt = smältpunkt;
+        Kokpunkt = kokpunkt;
+    }
+
+    public void Print()
+    {
+        Console.WriteLine($"Element: {Namn}");
+        Console.WriteLine($" typ: {Typ}");
+        Console.WriteLine($" smältpunkt: {Smältpunkt:F1} K");
+        Console.WriteLine($" kokpunkt: {Kokpunkt:F3} K");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Element syre = new Element("syre", 8, "ickemetall", 54.36, 90.188);
+        Element järn = new Element("järn", 26, "metall", 1811, 3134);
+        Element guld = new Element("guld", 79, "metall", 1337.33, 3243);
+
+        syre.Print();
+        järn.Print();
+        guld.Print();
+    }
+}
+
