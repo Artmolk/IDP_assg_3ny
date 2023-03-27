@@ -1,0 +1,64 @@
+using System;
+
+public class Element
+{
+    public string Namn { get; set; }
+    public int Z { get; set; }
+    public string Typ { get; set; }
+    public double Smältpunkt { get; set; }
+    public double Kokpunkt { get; set; }
+
+    public Element(string namn, int z, string typ, double smältpunkt, double kokpunkt)
+    {
+        Namn = namn;
+        Z = z;
+        Typ = typ;
+        Smältpunkt = smältpunkt;
+        Kokpunkt = kokpunkt;
+    }
+
+    public void Print()
+    {
+        Console.WriteLine($"Grundämne: {Namn}");
+        Console.WriteLine($" typ: {Typ}");
+        Console.WriteLine($" smältpunkt: {Smältpunkt:F1} K");
+        Console.WriteLine($" kokpunkt: {Kokpunkt:F3} K");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Element syre = new Element("syre", 8, "ickemetall", 54.36, 90.188);
+        Element järn = new Element("järn", 26, "metall", 1811, 3134);
+        Element guld = new Element("guld", 79, "metall", 1337.33, 3243);
+        Element väte = new Element("väte", 1, "ickemetall", 13.99, 20.271);
+        Element brom = new Element("brom", 35, "ickemetall", 265.8, 332.0);
+        Element kvicksilver = new Element("kvicksilver", 80, "metall", 234.3210, 629.88);
+
+        Element[] elements = new Element[] { syre, järn, guld, väte, brom, kvicksilver };
+
+        for (int i = 0; i < elements.Length; i++)
+        {
+            if (i < 3)
+            {
+                elements[i] = syre;
+            }
+            else if (i >= 3 && i < 5)
+            {
+                elements[i] = new Element("", 0, "", 0, 0);
+            }
+            else
+            {
+                elements[i] = kvicksilver;
+            }
+        }
+
+        foreach (Element element in elements)
+        {
+            element.Print();
+            Console.WriteLine();
+        }
+    }
+}
